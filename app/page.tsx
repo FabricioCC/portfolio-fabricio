@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from 'framer-motion';
-
+import ExamplesSection from './components/examples/ExamplesSection';
 // Variantes de animação reutilizáveis
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
@@ -115,88 +115,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="demo" id="demonstracao">
-        <div className="wrap">
-          <div className="section-head">
-            <span className="eyebrow">Como funciona</span>
-            <h2>O fluxo completo, do primeiro clique ao e-mail no cliente</h2>
-            <p>Um exemplo real de como o sistema se comporta — da entrada de um projeto novo até o relatório chegando pronto na caixa de entrada.</p>
-          </div>
-
-          <motion.svg
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flow-diagram"
-            viewBox="0 0 980 200"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Fluxo: formulário preenchido cria pastas no Drive, gera PDF a partir de um template e envia por e-mail ao cliente"
-          >
-            <defs>
-              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M0,0 L10,5 L0,10 z" fill="#3fc7b8"></path>
-              </marker>
-            </defs>
-
-            <motion.line variants={drawLine} x1="135" y1="100" x2="290" y2="100" stroke="#3fc7b8" strokeWidth="1.5" markerEnd="url(#arrow)" />
-            <motion.line variants={drawLine} x1="425" y1="100" x2="580" y2="100" stroke="#3fc7b8" strokeWidth="1.5" markerEnd="url(#arrow)" />
-            <motion.line variants={drawLine} x1="715" y1="100" x2="850" y2="100" stroke="#3fc7b8" strokeWidth="1.5" markerEnd="url(#arrow)" />
-
-            {[
-              { x: 15, num: '01', t1: 'Formulário', t2: 'dados do projeto', border: '#1f8a82' },
-              { x: 290, num: '02', t1: 'Pastas no Drive', t2: 'estrutura padrão', border: '#1f8a82' },
-              { x: 580, num: '03', t1: 'PDF gerado', t2: 'a partir de um template', border: '#1f8a82' },
-              { x: 850, num: '04', t1: 'E-mail enviado', t2: 'cliente recebe o link', border: '#5cb88a', last: true }
-            ].map((step, i) => (
-              <motion.g
-                key={step.num}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.2, duration: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <rect x={step.x} y="55" width={step.last ? 120 : 135} height="90" rx="6" fill="#0f2a38" stroke={step.border} strokeWidth={step.last ? '1.4' : '1.2'} />
-                <text x={step.x + (step.last ? 60 : 67.5)} y="92" textAnchor="middle" fill={step.last ? '#5cb88a' : '#3fc7b8'} fontFamily="var(--font-jetbrains)" fontSize="11">{step.num}</text>
-                <text x={step.x + (step.last ? 60 : 67.5)} y="115" textAnchor="middle" fill="#f4f7f6" fontFamily="var(--font-sora)" fontSize="13" fontWeight="600">{step.t1}</text>
-                <text x={step.x + (step.last ? 60 : 67.5)} y="131" textAnchor="middle" fill="#aebcc2" fontFamily="var(--font-inter)" fontSize="10.5">{step.t2}</text>
-              </motion.g>
-            ))}
-          </motion.svg>
-
-          <div className="mockups">
-            <div className="mockup-card">
-              <div className="mockup-bar">
-                <span className="dot"></span><span className="dot"></span><span className="dot"></span>
-                <span className="mockup-title">Drive — Projeto Residência Lopes</span>
-              </div>
-              <div className="mockup-body">
-                <div className="folder-row"><span className="folder-icon"></span>01_Plantas</div>
-                <div className="folder-row"><span className="folder-icon"></span>02_Renders</div>
-                <div className="folder-row"><span className="folder-icon"></span>03_Documentos</div>
-                <div className="folder-row"><span className="folder-icon"></span>04_Fotos de obra</div>
-                <div className="folder-row"><span className="folder-icon"></span>05_Relatórios</div>
-              </div>
-            </div>
-
-            <div className="mockup-card">
-              <div className="mockup-bar">
-                <span className="dot"></span><span className="dot"></span><span className="dot"></span>
-                <span className="mockup-title">Relatório_Obra_Junho.pdf</span>
-              </div>
-              <div className="mockup-body report-preview">
-                <div className="report-line title"></div>
-                <div className="report-line short"></div>
-                <div className="report-photo-row">
-                  <span className="report-photo"></span><span className="report-photo"></span>
-                </div>
-                <div className="report-line"></div>
-                <div className="report-line short"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ExamplesSection />
 
       <section className="experience" id="experiencia">
         <div className="wrap">
